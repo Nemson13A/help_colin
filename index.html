@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帮助科林！ - 趣味冒险游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 漂浮的学校表情符号层 -->
+        <div id="emoji-layer"></div>
+
+        <!-- 主屏幕 -->
+        <div id="home-screen" class="screen active">
+            <div class="character-container">
+                <img src="colin.png" alt="科林" id="colin-img">
+            </div>
+            <div class="content-container">
+                <h1 class="game-title">
+                    <span class="title-top">
+                        <span class="title-icon">🎒</span>
+                        <span class="letter" style="--color: #ff6b6b;">H</span>
+                        <span class="letter" style="--color: #48dbfb;">E</span>
+                        <span class="letter" style="--color: #feca57;">L</span>
+                        <span class="letter" style="--color: #1dd1a1;">P</span>
+                        <span class="pencil-icon">✏️</span>
+                    </span>
+                    <br>
+                    <span class="title-bottom">
+                        <span class="letter" style="--color: #ff6b6b;">C</span>
+                        <span class="letter" style="--color: #feca57;">O</span>
+                        <span class="letter" style="--color: #48dbfb;">L</span>
+                        <span class="pencil-letter">✏️</span>
+                        <span class="letter" style="--color: #ff9ff3;">N</span>
+                        <span class="letter" style="--color: #54a0ff;">!</span>
+                    </span>
+                </h1>
+                <div class="story-box">
+                    <p>哦不！科林又睡过头了！⏰</p>
+                    <p>校车已经在路上了，但他还没收拾好书包！🎒</p>
+                    <p>快帮科林抓住学习用品，避开那些捣蛋的东西！</p>
+                    <button id="start-btn" class="glow-button">HELP COLIN!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏层 -->
+        <div id="play-screen" class="screen">
+            <div id="game-info">
+                <div class="stats-container">
+                    <div class="stat-item score-board">得分: <span id="score-val">0</span></div>
+                    <div class="stat-item timer-board">时间: <span id="timer-val">30</span>s</div>
+                    <div class="stat-item lives-board">生命: <span id="lives-val">❤️❤️❤️</span></div>
+                </div>
+                <div class="hint">使用 ⬅️ ➡️ 键或滑动接住文具！</div>
+            </div>
+            <div id="game-world">
+                <img src="colin.png" alt="科林" id="backpack" class="player-colin">
+            </div>
+
+            <!-- 游戏结束提示框 -->
+            <div id="game-over-modal" class="modal">
+                <div class="modal-content">
+                    <h2 id="modal-title">时间到！⏰</h2>
+                    <div class="final-score">您的最终得分: <span id="final-score-val">0</span></div>
+                    <p id="modal-message">科林成功带上了文具，向校车飞奔而去！🚌</p>
+                    <div class="modal-buttons">
+                        <button id="restart-btn" class="glow-button small">再玩一次</button>
+                        <button id="back-home-btn" class="glow-button small secondary">返回主页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
