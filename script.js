@@ -98,6 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
         timerVal.textContent = timer;
         updateLivesUI();
         
+        // 提示框处理
+        const hint = document.querySelector('.hint');
+        if (hint) {
+            hint.classList.remove('fade-out');
+            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            hint.textContent = isTouch ? "滑动屏幕接住文具！" : "使用 ⬅️ ➡️ 键接住文具！";
+            
+            // 3秒后淡出
+            setTimeout(() => {
+                hint.classList.add('fade-out');
+            }, 3000);
+        }
+
         gameActive = true;
         backpackPos = 50;
         backpackVelocity = 0;
@@ -288,12 +301,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const backpackRect = backpack.getBoundingClientRect();
             const itemRect = item.element.getBoundingClientRect();
 
-            const hitBuffer = 15;
+            // 调大碰撞判定范围，增加容错率
+            const hitBuffer = 5; // 原为 15，减小 buffer 意味着判定区域变大
             if (
                 itemRect.bottom >= backpackRect.top + hitBuffer &&
                 itemRect.top <= backpackRect.bottom &&
-                itemRect.right >= backpackRect.left + hitBuffer &&
-                itemRect.left <= backpackRect.right - hitBuffer
+                itemRect.right >= backpackRect.left - 10 && // 左右各增加 10px 判定
+                itemRect.left <= backpackRect.right + 10
             ) {
                 item.isRemoving = true;
                 
